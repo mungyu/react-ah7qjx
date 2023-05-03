@@ -1,20 +1,26 @@
-import React from 'react';
-import ProjectCard from './components/ProjectCard';
-import './style.css';
+import React, { useState } from 'react';
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
 
-export default function App() {
-  const showCard = true;
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
+import ServicesPage from './ServicesPage';
+import NotFoundPage from './NotFoundPage';
+import NavBar from './NavBar';
+
+import './style.css';
+function App() {
   return (
-    <div>
-      {showCard ? (
-        <>
-          <ProjectCard name="Caleb" role="intern" />
-          <ProjectCard name="abby" />
-          <ProjectCard name="john" />
-        </>
-      ) : (
-        <p>Empty</p>
-      )}
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
+
+export default App;
